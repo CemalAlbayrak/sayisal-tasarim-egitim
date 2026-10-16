@@ -1,0 +1,27 @@
+<h2 id="m1-sinyal-dili">M1 · Sinyal dili</h2>
+<p>Sinyal işleme beş kelimeyle konuşur: genlik, frekans, faz, desibel ve karmaşık sayı. Bu dersin sonunda bir mikser çıkışının neden frekans kaydırdığını iki satır matematikle açıklayabilmelisin.</p>
+<h3 id="m11-sinüs">M1.1 Sinüs</h3>
+<pre><code class="language-latex">x(t) = A \sin(2\pi f t + \varphi)</code></pre>
+<ul><li><p><strong>A, genlik:</strong> tepe değeri. Volt ya da ADC kodu olabilir.</p></li><li><p><strong>f, frekans:</strong> saniyedeki tur sayısı, birimi hertz (Hz). <strong>Periyot</strong> T = 1/f. 1 kHz&#39;lik sinüsün periyodu 1 ms&#39;dir.</p></li><li><p><strong>ω = 2πf, açısal frekans:</strong> saniyede kaç radyan döndüğü. Formüllerde çoğu zaman f yerine bu geçer.</p></li><li><p><strong>φ, faz:</strong> dalganın başlangıç açısı. Zaman kaymasına çevrilir: Δt = φ / (2πf). 1 kHz&#39;de 90° (π/2) faz, 0,25 ms kayma demektir.</p></li><li><p>Kosinüs, 90° öne kaymış sinüstür. Bu yüzden ikisine birlikte &quot;sinüzoidal&quot; denir.</p></li></ul>
+<h3 id="m12-desibel">M1.2 Desibel</h3>
+<p>Desibel (dB) bir <strong>oranın</strong> logaritmasıdır; tek başına bir büyüklük değildir. Çarpmayı toplamaya çevirdiği için kazanç zincirleri kolay hesaplanır.</p>
+<pre><code class="language-latex">G_{dB} = 10 \log_{10}\frac{P_2}{P_1} = 20 \log_{10}\frac{V_2}{V_1}</code></pre>
+<p>Güç genliğin karesiyle orantılı olduğu için genlik oranında 20 kullanılır.</p>
+<table><thead><tr><th>dB</th><th>Güç oranı</th><th>Genlik oranı</th></tr></thead><tbody><tr><td>+3</td><td>yaklaşık 2</td><td>yaklaşık 1,41</td></tr><tr><td>+6</td><td>yaklaşık 4</td><td>yaklaşık 2</td></tr><tr><td>+10</td><td>10</td><td>yaklaşık 3,16</td></tr><tr><td>+20</td><td>100</td><td>10</td></tr><tr><td>−60</td><td>1/1.000.000</td><td>1/1000</td></tr></tbody></table>
+<ul><li><p><strong>dBm:</strong> 1 mW&#39;a göre güç. 0 dBm = 1 mW, 30 dBm = 1 W. RF&#39;de her yerde karşına çıkar.</p></li><li><p><strong>dBFS:</strong> ADC&#39;nin tam ölçeğine göre seviye. 0 dBFS ADC&#39;nin taşmadan verebildiği en büyük sinüstür; −20 dBFS onun onda biri genlik demektir.</p></li></ul>
+<h3 id="m13-karmaşık-sayılar">M1.3 Karmaşık sayılar</h3>
+<p>Karmaşık sayı z = a + jb, düzlemde bir noktadır: a gerçel eksen, b sanal eksen (mühendislikte i yerine j yazılır, j² = −1).</p>
+<ul><li><p><strong>Kutupsal biçim:</strong> büyüklük |z| = √(a² + b²), açı θ = atan2(b, a).</p></li><li><p><strong>Çarpmanın anlamı:</strong> iki karmaşık sayı çarpılınca büyüklükler çarpılır, <strong>açılar toplanır</strong>. Yani büyüklüğü 1 olan bir sayıyla çarpmak, döndürmektir. CORDIC tam olarak bu döndürmeyi kaydırma ve toplamayla yapar (B6).</p></li><li><p><strong>Eşlenik:</strong> z* = a − jb. z·z* = |z|², yani güç.</p></li></ul>
+<h3 id="m14-euler-formülü-ve-dönen-ok">M1.4 Euler formülü ve dönen ok</h3>
+<pre><code class="language-latex">e^{j\theta} = \cos\theta + j\sin\theta</code></pre>
+<ul><li><p>θ = 2πft alınırsa e^{j2πft}, birim çember üzerinde saniyede f tur dönen bir oktur (fazör). Gerçel kısmı kosinüs, sanal kısmı sinüstür.</p></li><li><p>Ters yönde dönen ok, <strong>negatif frekanstır</strong>. Gerçel bir kosinüs, zıt yönde dönen iki okun toplamıdır:</p></li></ul>
+<pre><code class="language-latex">\cos(2\pi f t) = \frac{e^{j2\pi f t} + e^{-j2\pi f t}}{2}</code></pre>
+<ul><li><p>Bu yüzden gerçel bir sinyalin spektrumu hep simetriktir: +f&#39;deki her bileşenin −f&#39;de bir ikizi vardır. Karmaşık (I/Q) sinyalde bu zorunluluk kalkar.</p></li></ul>
+<h3 id="m15-iq-ve-mikser">M1.5 I/Q ve mikser</h3>
+<ul><li><p><strong>I/Q:</strong> bir sinyali iki gerçel kanal olarak taşımak. I (eş fazlı) gerçel kısım, Q (dik fazlı) sanal kısımdır: x = I + jQ.</p></li><li><p><strong>Mikser:</strong> sinyali e^{−j2πf<sub>c</sub> t} ile çarpmak açıları topladığı için <strong>frekansları toplar</strong>. f&#39;deki bileşen f − f<sub>c</sub>&#39;ye iner. RF&#39;yi taban banda indiren şey budur:</p></li></ul>
+<pre><code class="language-latex">e^{j2\pi f t} \cdot e^{-j2\pi f_c t} = e^{j2\pi (f - f_c) t}</code></pre>
+<ul><li><p>Gerçel bir kosinüsle çarparsan (yalnız I kanalı), çarpım iki okun toplamı olduğu için hem f − f<sub>c</sub> hem f + f<sub>c</sub> çıkar. İş yerinde kullandığın mikserlerden sonra neden alçak geçiren süzgeç geldiği buradan anlaşılır.</p></li></ul>
+<h3 id="kendin-dene-python">Kendin dene (Python)</h3>
+<ol><li><p>numpy ile 1 kHz, 1 V genlikli, 45° fazlı bir sinüs üret ve çiz. Faz kaymasının kaç mikrosaniye olduğunu grafikten oku ve formülle karşılaştır.</p></li><li><p><code>np.exp(1j*2*np.pi*f*t)</code> üret. Gerçel ve sanal kısmı aynı grafikte, sonra I&#39;ya karşı Q olarak çiz: çember görmelisin.</p></li><li><p>10 kHz&#39;lik karmaşık bir tonu 9 kHz&#39;lik e^{−j…} ile çarp; sonucun 1 kHz olduğunu doğrula. Aynısını gerçel kosinüslerle yap ve 19 kHz&#39;lik bileşeni de bul.</p></li></ol>
+<h3 id="sorular-2">Sorular</h3>
+<ol><li><p>2,4 GHz&#39;lik bir sinyalin periyodu kaç pikosaniyedir? Bu sürede ışık yaklaşık ne kadar yol alır?</p></li><li><p>Bir yükselteç +20 dB, ardından gelen kablo −3 dB, süzgeç −1 dB ise toplam kazanç kaç dB&#39;dir? Giriş −30 dBm ise çıkış kaç mW olur?</p></li><li><p>Neden genlik oranında 20, güç oranında 10 kullanılır?</p></li><li><p>Karmaşık bir sayıyı j ile çarpmak geometrik olarak ne yapar?</p></li><li><p>Yalnız I kanalı olan bir alıcı, f<sub>c</sub> + 1 MHz ile f<sub>c</sub> − 1 MHz&#39;deki iki sinyali neden birbirinden ayıramaz?</p></li></ol>

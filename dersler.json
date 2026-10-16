@@ -1,0 +1,249 @@
+[
+ {
+  "id": "giris",
+  "grup": "Başlangıç",
+  "ad": "Nasıl kullanılır",
+  "yazildi": true,
+  "takip": false
+ },
+ {
+  "id": "A1",
+  "grup": "Temeller",
+  "ad": "Sayısal mantık tekrarı",
+  "yazildi": true,
+  "takip": true
+ },
+ {
+  "id": "A2",
+  "grup": "Temeller",
+  "ad": "FPGA mimarisi: Zynq-7010",
+  "yazildi": true,
+  "takip": true
+ },
+ {
+  "id": "A3",
+  "grup": "Temeller",
+  "ad": "Verilog'dan SystemVerilog'a",
+  "yazildi": true,
+  "takip": true
+ },
+ {
+  "id": "M",
+  "grup": "Matematik ve sinyal",
+  "ad": "Hattın haritası",
+  "yazildi": true,
+  "takip": false
+ },
+ {
+  "id": "M1",
+  "grup": "Matematik ve sinyal",
+  "ad": "Sinyal dili",
+  "yazildi": true,
+  "takip": true
+ },
+ {
+  "id": "M2",
+  "grup": "Matematik ve sinyal",
+  "ad": "Frekans alanı",
+  "yazildi": true,
+  "takip": true
+ },
+ {
+  "id": "M3",
+  "grup": "Matematik ve sinyal",
+  "ad": "Örnekleme",
+  "yazildi": true,
+  "takip": true
+ },
+ {
+  "id": "M4",
+  "grup": "Matematik ve sinyal",
+  "ad": "Kuantalama ve sayı gösterimi",
+  "yazildi": false,
+  "konu": "ADC/DAC, LSB, SNR ve ENOB, ikiye tümleyen, sabit nokta, kayan nokta",
+  "takip": true
+ },
+ {
+  "id": "M5",
+  "grup": "Matematik ve sinyal",
+  "ad": "Ayrık zamanlı sistemler",
+  "yazildi": false,
+  "konu": "Doğrusal ve zamanla değişmeyen sistem, dürtü yanıtı, evrişim, fark denklemi, z-dönüşümü, kutup ve sıfır",
+  "takip": true
+ },
+ {
+  "id": "M6",
+  "grup": "Matematik ve sinyal",
+  "ad": "DFT ve FFT",
+  "yazildi": false,
+  "konu": "Çözünürlük, pencereleme, spektral sızıntı",
+  "takip": true
+ },
+ {
+  "id": "M7",
+  "grup": "Matematik ve sinyal",
+  "ad": "Süzgeç tasarımı",
+  "yazildi": false,
+  "konu": "Özellikler, doğrusal faz, grup gecikmesi, FIR ve IIR tasarım yöntemleri",
+  "takip": true
+ },
+ {
+  "id": "M8",
+  "grup": "Matematik ve sinyal",
+  "ad": "Çok hızlı işleme",
+  "yazildi": false,
+  "konu": "Seyreltme, ara değerleme, örtüşme ve hayalet görüntü",
+  "takip": true
+ },
+ {
+  "id": "M9",
+  "grup": "Matematik ve sinyal",
+  "ad": "Olasılık, gürültü ve korelasyon",
+  "yazildi": false,
+  "konu": "Gauss dağılımı, güç spektral yoğunluğu, beyaz gürültü, oto ve çapraz korelasyon",
+  "takip": true
+ },
+ {
+  "id": "M10",
+  "grup": "Matematik ve sinyal",
+  "ad": "Doğrusal cebir temeli",
+  "yazildi": false,
+  "konu": "Vektör, matris, iç çarpım, en küçük kareler",
+  "takip": true
+ },
+ {
+  "id": "M11",
+  "grup": "Matematik ve sinyal",
+  "ad": "Haberleşme temelleri",
+  "yazildi": false,
+  "konu": "Taban bant ve taşıyıcı bant, I/Q, PSK ve QAM, darbe şekillendirme, simgeler arası girişim, Eb/N0, BER, Shannon kapasitesi",
+  "takip": true
+ },
+ {
+  "id": "B",
+  "grup": "Aşamalar",
+  "ad": "Aşamaların haritası",
+  "yazildi": true,
+  "takip": false
+ },
+ {
+  "id": "B0",
+  "grup": "Aşamalar",
+  "ad": "Altyapı",
+  "yazildi": false,
+  "konu": "Vivado Tcl akışı ve Makefile; Icarus/Verilator ve cocotb; depo düzeni",
+  "takip": true
+ },
+ {
+  "id": "B1",
+  "grup": "Aşamalar",
+  "ad": "Doğrulama ve sabit nokta",
+  "yazildi": false,
+  "konu": "Kendini kontrol eden doğrulama ortamı; SVA; Python sabit nokta modeli; doyumlu çarp-topla",
+  "takip": true
+ },
+ {
+  "id": "B2",
+  "grup": "Aşamalar",
+  "ad": "Zamanlama, CDC, hata ayıklama",
+  "yazildi": false,
+  "konu": "XDC kısıtları ve zamanlama raporu okuma; yanlış ve çok çevrimli yollar; Gray kodlu asenkron FIFO; ILA ve VIO",
+  "takip": true
+ },
+ {
+  "id": "B3",
+  "grup": "Aşamalar",
+  "ad": "FIR",
+  "yazildi": false,
+  "konu": "Doğrudan ve devrik yapı; sistolik yapı ve DSP zinciri; simetri ve ön toplayıcı; ses kodeğinde gerçek zamanlı deneme",
+  "takip": true
+ },
+ {
+  "id": "B4",
+  "grup": "Aşamalar",
+  "ad": "Çok hızlı işleme (uygulama)",
+  "yazildi": false,
+  "konu": "CIC ve kompanzasyon; yarı bant süzgeci; çok fazlı seyreltme ve ara değerleme",
+  "takip": true
+ },
+ {
+  "id": "B5",
+  "grup": "Aşamalar",
+  "ad": "IIR",
+  "yazildi": false,
+  "konu": "Biquad; DF1 ve DF2T; katsayı kuantalama ve kararlılık; sınır çevrimleri",
+  "takip": true
+ },
+ {
+  "id": "B6",
+  "grup": "Aşamalar",
+  "ad": "CORDIC ve NCO",
+  "yazildi": false,
+  "konu": "Döndürme ve vektör kipleri; kazanç ve çeyrek düzeltmesi; NCO ve faz kesme sahte tonları",
+  "takip": true
+ },
+ {
+  "id": "B7",
+  "grup": "Aşamalar",
+  "ad": "PS-PL",
+  "yazildi": false,
+  "konu": "AXI4-Lite kaydedici bloğu; AXI-Stream ve AXI DMA; kesmeler; Vitis'te çıplak metal C sürücü",
+  "takip": true
+ },
+ {
+  "id": "B8",
+  "grup": "Aşamalar",
+  "ad": "DDC/DUC zinciri",
+  "yazildi": false,
+  "konu": "Zinciri birleştirme; DMA ile yakalama; spektrumu PS'de çizdirme",
+  "takip": true
+ },
+ {
+  "id": "B9",
+  "grup": "Aşamalar",
+  "ad": "UVM",
+  "yazildi": false,
+  "konu": "SV nesneleri; UVM bileşenleri ve fazları; dizi (sequence) ve karşılaştırıcı; kapsam",
+  "takip": true
+ },
+ {
+  "id": "B10",
+  "grup": "Aşamalar",
+  "ad": "Uyarlamalı süzgeç",
+  "yazildi": false,
+  "konu": "LMS ve NLMS; adım boyu ve kararlılık; sabit noktada yakınsama; karıştırıcı bastırmaya bağlantı",
+  "takip": true
+ },
+ {
+  "id": "B11",
+  "grup": "Aşamalar",
+  "ad": "QPSK alıcı",
+  "yazildi": false,
+  "konu": "Kök yükseltilmiş kosinüs (RRC); simge zamanlama (Gardner); taşıyıcı eşzamanlama (Costas); BER ölçümü",
+  "takip": true
+ },
+ {
+  "id": "B12",
+  "grup": "Aşamalar",
+  "ad": "FFT ve OFDM",
+  "yazildi": false,
+  "konu": "Radix-2 FFT; Xilinx FFT IP; döngüsel önek; Schmidl-Cox eşzamanlama; pilotla kanal kestirimi ve eşitleme",
+  "takip": true
+ },
+ {
+  "id": "B13",
+  "grup": "Aşamalar",
+  "ad": "Görüntü işleme",
+  "yazildi": false,
+  "konu": "AXI4-Stream video; satır tamponu ve 3×3 pencere; Sobel ve Gauss; VDMA; HDMI giriş-çıkış",
+  "takip": true
+ },
+ {
+  "id": "BP",
+  "grup": "Aşamalar",
+  "ad": "Fiber hattı (paralel)",
+  "yazildi": false,
+  "konu": "GTX alıcı-vericisi; 8b/10b ve 64b/66b; Aurora'nın içi; IBERT ile göz diyagramı; JESD204B'ye giriş",
+  "takip": true
+ }
+]
