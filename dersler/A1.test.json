@@ -1,0 +1,48 @@
+[
+ {
+  "s": "100 MHz saatte tcq = 0,5 ns ve kurulma süresi 0,1 ns. Kayma ve belirsizlik sıfırsa iki kaydedici arasındaki birleşik mantığa en fazla kaç ns kalır?",
+  "n": 9.4,
+  "tol": 0.05,
+  "birim": "ns",
+  "a": "10 ns − 0,5 ns − 0,1 ns = 9,4 ns."
+ },
+ {
+  "s": "Tutma (hold) ihlali için hangisi doğrudur?",
+  "c": [
+   "Saati yavaşlatınca düzelir",
+   "Saat periyodundan bağımsızdır; saati yavaşlatmak düzeltmez",
+   "Yalnız asenkron girişlerde görülür",
+   "Araya kaydedici koyunca her zaman düzelir"
+  ],
+  "d": 1,
+  "a": "Tutma koşulunda T_saat geçmez: tcq + t_mantık,min ≥ t_tutma + t_kayma."
+ },
+ {
+  "s": "always @(*) bloğunda bir sinyale bazı dallarda değer atanmazsa sentez ne üretir?",
+  "c": [
+   "Kaydedici (flip-flop)",
+   "Mandal (latch)",
+   "Blok RAM",
+   "Hiçbir şey; sinyal sıfır kalır"
+  ],
+  "d": 1,
+  "a": "Değeri korumak için seviye duyarlı bir mandal gerekir; zamanlama analizi onu güvenilir izleyemez."
+ },
+ {
+  "s": "Sürekli artan çok bitli bir sayaç değerini başka bir saat alanına geçirmenin doğru yolu hangisi?",
+  "c": [
+   "Her bite ayrı iki kaydedicili eşzamanlayıcı koymak",
+   "Değeri Gray koduna çevirip öyle eşzamanlamak",
+   "Üç kaydedicili eşzamanlayıcı kullanmak",
+   "Saat alanlarını aynı frekansta tutmak"
+  ],
+  "d": 1,
+  "a": "Gray kodunda ardışık değerler tek bit değişir; yanlış yakalansa bile ya eski ya yeni değer okunur."
+ },
+ {
+  "s": "8 durumlu bir durum makinesi bir-sıcak (one-hot) kodlanırsa kaç kaydedici kullanır?",
+  "n": 8,
+  "tol": 0,
+  "a": "Her duruma bir bit: 8 kaydedici. İkili kodlama 3 kaydediciyle yeterdi."
+ }
+]

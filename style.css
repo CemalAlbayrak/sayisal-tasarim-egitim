@@ -88,3 +88,20 @@ textarea.disa { width: 100%; min-height: 160px; font: .85rem/1.4 var(--mono); ma
 .bildirim { position: fixed; left: 50%; transform: translateX(-50%); bottom: calc(env(safe-area-inset-bottom, 0px) + 16px);
   background: var(--murekkep); color: var(--zemin); border-radius: 8px; padding: 10px 16px; font-size: .9rem; max-width: calc(100% - 32px); z-index: 10; }
 @media (prefers-reduced-motion: reduce) { * { scroll-behavior: auto !important; } }
+
+/* Kısa test */
+.test { margin-top: 32px; border-top: 1px solid var(--cizgi); padding-top: 16px; }
+.test h3 { font-size: .78rem; text-transform: uppercase; letter-spacing: .08em; color: var(--soluk); margin: 0 0 12px; }
+.soru { background: var(--kagit); border: 1px solid var(--cizgi); border-radius: 10px; padding: 12px 14px; margin-bottom: 12px; }
+.soru.dogru { border-color: var(--tamam); }
+.soru.yanlis { border-color: var(--vurgu); }
+.soru-metin { margin: 0 0 10px; font-weight: 600; }
+.secenekler { display: flex; flex-direction: column; gap: 6px; }
+.secenek { font: inherit; text-align: left; border: 1px solid var(--cizgi); background: var(--zemin); color: var(--murekkep); border-radius: 8px; padding: 8px 12px; cursor: pointer; }
+.secenek:disabled { cursor: default; }
+.secenek.dogru-secenek { background: var(--tamam-acik); border-color: var(--tamam); }
+.secenek.yanlis-secenek { background: var(--vurgu-acik); border-color: var(--vurgu); }
+.sayisal { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+.sayisal input { font: inherit; width: 8em; border: 1px solid var(--cizgi); border-radius: 8px; padding: 7px 10px; background: var(--zemin); color: var(--murekkep); }
+.geri-bildirim { margin: 10px 0 0; font-size: .92rem; }
+.test-sonuc { font-weight: 600; margin: 4px 0 10px; }

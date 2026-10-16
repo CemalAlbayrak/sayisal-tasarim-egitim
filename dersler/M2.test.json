@@ -1,0 +1,53 @@
+[
+ {
+  "s": "1 µs genişliğindeki dikdörtgen darbenin spektrumunun ilk sıfırı kaç MHz'tedir?",
+  "n": 1,
+  "tol": 0,
+  "birim": "MHz",
+  "a": "İlk sıfır 1/τ'dadır: 1 / 1 µs = 1 MHz."
+ },
+ {
+  "s": "İdeal bir kare dalga hangi harmonikleri içerir?",
+  "c": [
+   "Bütün harmonikleri",
+   "Yalnız tek harmonikleri",
+   "Yalnız çift harmonikleri",
+   "Yalnız temel frekansı"
+  ],
+  "d": 1,
+  "a": "Genlikleri 1, 1/3, 1/5… diye azalan tek harmonikler."
+ },
+ {
+  "s": "Zaman alanında evrişim, frekans alanında neye karşılık gelir?",
+  "c": [
+   "Toplamaya",
+   "Çarpmaya",
+   "Evrişime",
+   "Türeve"
+  ],
+  "d": 1,
+  "a": "Süzgecin çıkış spektrumu = giriş spektrumu × frekans yanıtı."
+ },
+ {
+  "s": "Bir sinyali zamanda geciktirmek spektrumunu nasıl etkiler?",
+  "c": [
+   "Genliği azaltır",
+   "Frekansla doğrusal artan bir faz ekler, genlik değişmez",
+   "Spektrumu kaydırır",
+   "Hiç etkilemez"
+  ],
+  "d": 1,
+  "a": "Doğrusal fazlı FIR'in dalga biçimini bozmadan geciktirmesinin nedeni budur."
+ },
+ {
+  "s": "Zamanda çok kısa bir darbenin spektrumu nasıldır?",
+  "c": [
+   "Çok dar",
+   "Geniş ve düze yakın",
+   "Tek bir çizgi",
+   "Sıfır"
+  ],
+  "d": 1,
+  "a": "Zamanda dar olan frekansta geniştir; ideal dürtünün spektrumu düzdür."
+ }
+]

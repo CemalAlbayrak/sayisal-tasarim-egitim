@@ -1,0 +1,41 @@
+[
+ {
+  "s": "Giriş −30 dBm. Ardından +20 dB yükselteç, −3 dB kablo ve −1 dB süzgeç geliyor. Çıkış kaç dBm?",
+  "n": -14,
+  "tol": 0,
+  "birim": "dBm",
+  "a": "Desibeller toplanır: −30 + 20 − 3 − 1 = −14 dBm."
+ },
+ {
+  "s": "0 dBm kaç mW'tır?",
+  "n": 1,
+  "tol": 0,
+  "birim": "mW",
+  "a": "dBm, 1 mW'a göre güç oranıdır; 0 dB oran 1 demektir."
+ },
+ {
+  "s": "Genlik 10 kat artarsa bu kaç dB'dir?",
+  "n": 20,
+  "tol": 0,
+  "birim": "dB",
+  "a": "Genlik oranında 20·log10(10) = 20 dB. Güç 100 kat artmıştır."
+ },
+ {
+  "s": "Büyüklüğü 1 olan bir karmaşık sayıyla çarpmak geometrik olarak ne yapar?",
+  "c": [
+   "Ölçekler",
+   "Döndürür",
+   "Eksene göre yansıtır",
+   "Öteler"
+  ],
+  "d": 1,
+  "a": "Çarpmada büyüklükler çarpılır (×1), açılar toplanır: saf döndürme."
+ },
+ {
+  "s": "10 kHz'lik karmaşık bir ton e^(−j2π·9000·t) ile çarpılıyor. Sonucun frekansı kaç kHz?",
+  "n": 1,
+  "tol": 0,
+  "birim": "kHz",
+  "a": "Açılar toplanır: 10 − 9 = 1 kHz. Mikserin frekans kaydırması budur."
+ }
+]

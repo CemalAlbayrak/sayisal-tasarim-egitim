@@ -11,14 +11,16 @@
   "grup": "Temeller",
   "ad": "Sayısal mantık tekrarı",
   "yazildi": true,
-  "takip": true
+  "takip": true,
+  "test": true
  },
  {
   "id": "A2",
   "grup": "Temeller",
   "ad": "FPGA mimarisi: Zynq-7010",
   "yazildi": true,
-  "takip": true
+  "takip": true,
+  "test": true
  },
  {
   "id": "A3",
@@ -39,21 +41,24 @@
   "grup": "Matematik ve sinyal",
   "ad": "Sinyal dili",
   "yazildi": true,
-  "takip": true
+  "takip": true,
+  "test": true
  },
  {
   "id": "M2",
   "grup": "Matematik ve sinyal",
   "ad": "Frekans alanı",
   "yazildi": true,
-  "takip": true
+  "takip": true,
+  "test": true
  },
  {
   "id": "M3",
   "grup": "Matematik ve sinyal",
   "ad": "Örnekleme",
   "yazildi": true,
-  "takip": true
+  "takip": true,
+  "test": true
  },
  {
   "id": "M4",

@@ -87,8 +87,8 @@ function ozetMetni() {
     if (!s) return;
     const adimlar = ADIMLAR.filter(([k]) => s[k]).map(([, ad]) => ad.toLowerCase());
     const not = (s.not || "").trim();
-    if (!adimlar.length && !not) return;
-    satirlar.push("", d.id + " " + d.ad + ": " + (adimlar.join(", ") || "işaret yok"));
+    if (!adimlar.length && !not && !s.test) return;
+    satirlar.push("", d.id + " " + d.ad + ": " + (adimlar.join(", ") || "işaret yok") + (s.test ? " · test " + s.test.dogru + "/" + s.test.toplam : ""));
     if (not) satirlar.push("Not: " + not);
   });
   if (satirlar.length === 1) satirlar.push("", "Henüz işaret ya da not yok.");
@@ -106,7 +106,8 @@ async function kopyala(metin) {
 function formulleriCiz(kok) {
   kok.querySelectorAll("pre > code.language-latex").forEach(kod => {
     const kap = el("div", { class: "formul" });
-    try { katex.render(kod.textContent, kap, { displayMode: true, throwOnError: false, strict: "ignore" }); }
+    const tex = kod.textContent.replace(/_\{([^{}]*[^\x00-\x7F][^{}]*)\}/g, "_{\\text{$1}}");
+    try { katex.render(tex, kap, { displayMode: true, throwOnError: false, strict: "ignore" }); }
     catch (e) { kap.textContent = kod.textContent; }
     kod.parentElement.replaceWith(kap);
   });
@@ -138,11 +139,98 @@ async function ders(id) {
     p.append(el("p", {}, "Bu ders henüz yazılmadı. Kapsayacağı konular:"), el("p", {}, d.konu));
     govde.append(p);
   }
+  if (d.test) icerik.append(await testAlani(d));
   if (d.takip) icerik.append(takipAlani(d));
   icerik.append(gezinti(d));
   const konum = oku(KONUM)[id];
   window.scrollTo(0, konum || 0);
   icerik.focus({ preventScroll: true });
+}
+
+function sayiOku(metin) {
+  const t = String(metin).trim().replace(/\s/g, "").replace(",", ".");
+  return t === "" ? NaN : Number(t);
+}
+
+async function testAlani(d) {
+  const kap = el("section", { class: "test" });
+  kap.append(el("h3", {}, "Kısa test"));
+  let sorular;
+  try {
+    const r = await fetch("dersler/" + d.id + ".test.json");
+    if (!r.ok) throw new Error(r.status);
+    sorular = await r.json();
+  } catch (e) {
+    kap.append(el("p", { class: "soluk" }, "Test yüklenemedi."));
+    return kap;
+  }
+  const cevaplar = new Array(sorular.length).fill(null);
+  const sonuc = el("p", { class: "test-sonuc" });
+  const s = ilerleme[d.id] || (ilerleme[d.id] = {});
+  if (s.test) sonuc.textContent = "Son denemen: " + s.test.dogru + " / " + s.test.toplam + " (" + s.test.tarih + ")";
+
+  function bitir() {
+    if (cevaplar.some(c => c === null)) return;
+    const dogru = cevaplar.filter(Boolean).length;
+    s.test = { dogru, toplam: sorular.length, tarih: new Date().toLocaleDateString("tr-TR") };
+    yaz(ANAHTAR, ilerleme);
+    const gecti = dogru / sorular.length >= 0.8;
+    sonuc.textContent = dogru + " / " + sorular.length + " doğru. " + (gecti ? "Geçme sınırı (%80) aşıldı." : "Geçme sınırı %80; yanlışların açıklamasını okuyup tekrar dene.");
+  }
+
+  sorular.forEach((q, i) => {
+    const kutu = el("div", { class: "soru" });
+    kutu.append(el("p", { class: "soru-metin" }, (i + 1) + ". " + q.s));
+    const geri = el("p", { class: "geri-bildirim" });
+    geri.hidden = true;
+    function goster(dogruMu) {
+      cevaplar[i] = dogruMu;
+      kutu.classList.add(dogruMu ? "dogru" : "yanlis");
+      geri.hidden = false;
+      geri.textContent = (dogruMu ? "Doğru. " : "Yanlış. ") + (q.a || "");
+      bitir();
+    }
+    if (q.c) {
+      const secenekler = el("div", { class: "secenekler" });
+      q.c.forEach((metin, j) => {
+        const b = el("button", { class: "secenek", type: "button" }, metin);
+        b.addEventListener("click", () => {
+          if (cevaplar[i] !== null) return;
+          secenekler.querySelectorAll("button").forEach((x, k) => {
+            x.disabled = true;
+            if (k === q.d) x.classList.add("dogru-secenek");
+          });
+          if (j !== q.d) b.classList.add("yanlis-secenek");
+          goster(j === q.d);
+        });
+        secenekler.append(b);
+      });
+      kutu.append(secenekler);
+    } else {
+      const satir = el("div", { class: "sayisal" });
+      const giris = el("input", { type: "text", inputmode: "decimal", "aria-label": "Cevap", id: "soru-" + d.id + "-" + i });
+      const birim = el("span", { class: "soluk" }, q.birim || "");
+      const kontrol = el("button", { class: "dugme", type: "button" }, "Kontrol et");
+      kontrol.addEventListener("click", () => {
+        if (cevaplar[i] !== null) return;
+        const v = sayiOku(giris.value);
+        if (Number.isNaN(v)) { bildir("Bir sayı yaz."); return; }
+        giris.disabled = true; kontrol.disabled = true;
+        const tamam = Math.abs(v - q.n) <= (q.tol || 0);
+        geri.dataset.dogru = q.n;
+        goster(tamam);
+        if (!tamam) geri.textContent = "Yanlış. Doğru cevap: " + String(q.n).replace(".", ",") + (q.birim ? " " + q.birim : "") + ". " + (q.a || "");
+      });
+      satir.append(giris, birim, kontrol);
+      kutu.append(satir);
+    }
+    kutu.append(geri);
+    kap.append(kutu);
+  });
+  const yeniden = el("button", { class: "dugme", type: "button" }, "Testi baştan çöz");
+  yeniden.addEventListener("click", async () => { kap.replaceWith(await testAlani(d)); });
+  kap.append(sonuc, yeniden);
+  return kap;
 }
 
 function takipAlani(d) {

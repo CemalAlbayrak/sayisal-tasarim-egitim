@@ -1,0 +1,47 @@
+[
+ {
+  "s": "7-serisi FPGA'larda bir arama tablosu (LUT) kaç girişlidir?",
+  "n": 6,
+  "tol": 0,
+  "a": "6 girişli; istenirse ortak girişli iki 5 girişli LUT gibi çalışır."
+ },
+ {
+  "s": "Simetrik, 51 katsayılı bir FIR ön toplayıcı (pre-adder) kullanılarak en az kaç çarpmayla gerçeklenir?",
+  "n": 26,
+  "tol": 0,
+  "a": "25 simetrik çift önce toplanır, orta katsayı tek kalır: 25 + 1 = 26."
+ },
+ {
+  "s": "Büyük bir bellek kodda assign veri = bellek[adres] biçiminde (asenkron okumalı) yazılırsa sentez ne kullanır?",
+  "c": [
+   "Blok RAM",
+   "LUT'tan dağıtık RAM",
+   "DSP48 dilimi",
+   "Sentez hata verir"
+  ],
+  "d": 1,
+  "a": "Blok RAM okuması eşzamanlıdır; asenkron okuma ancak LUT tabanlı dağıtık RAM'le kurulabilir."
+ },
+ {
+  "s": "Zynq'te PL'nin DDR belleğe yüksek bant genişliğiyle eriştiği (DMA için kullanılan) kapı hangisi?",
+  "c": [
+   "AXI GP",
+   "AXI HP",
+   "EMIO",
+   "MIO"
+  ],
+  "d": 1,
+  "a": "HP (high performance) kapıları DDR denetleyicisine doğrudan gider. GP kapıları kontrol kaydedicileri içindir."
+ },
+ {
+  "s": "Bir bloğun her 100 saat çevriminde bir kez çalışması gerekiyor. Doğru yöntem hangisi?",
+  "c": [
+   "Sayacın bir bitini o bloğun saati yapmak",
+   "Aynı saatte kalıp saat etkinleştirme (clock enable) kullanmak",
+   "Bloğu mandallarla kurmak",
+   "Ayrı bir osilatör eklemek"
+  ],
+  "d": 1,
+  "a": "Mantıkla üretilen saat, genel saat ağına binmez ve zamanlama analizini bozar."
+ }
+]

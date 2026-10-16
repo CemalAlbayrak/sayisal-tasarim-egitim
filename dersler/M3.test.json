@@ -1,0 +1,41 @@
+[
+ {
+  "s": "fₛ = 100 kHz ile örneklenen 70 kHz'lik bir ton kaç kHz'te görünür?",
+  "n": 30,
+  "tol": 0,
+  "birim": "kHz",
+  "a": "|70 − 100| = 30 kHz; Nyquist frekansı 50 kHz'in üstündeki ton katlanır."
+ },
+ {
+  "s": "fₛ = 48 kHz ses kodeğine (örtüşme önleyici süzgeç olmadan) 30 kHz'lik bir ton girerse kaç kHz'te duyulur?",
+  "n": 18,
+  "tol": 0,
+  "birim": "kHz",
+  "a": "|30 − 48| = 18 kHz."
+ },
+ {
+  "s": "100 MSPS'lik bir ADC'nin Nyquist frekansı kaç MHz'tir?",
+  "n": 50,
+  "tol": 0,
+  "birim": "MHz",
+  "a": "Nyquist frekansı fₛ / 2'dir."
+ },
+ {
+  "s": "100 MHz'lik girişte 1 ps saat titremesi en fazla kaç dB SNR'a izin verir? (yaklaşık)",
+  "n": 64,
+  "tol": 0.5,
+  "birim": "dB",
+  "a": "−20·log10(2π · 100 MHz · 1 ps) ≈ 64 dB."
+ },
+ {
+  "s": "140–160 MHz arasındaki bir sinyal için hangi örnekleme hızı bant geçiren örneklemeye uygundur?",
+  "c": [
+   "100 MSPS",
+   "120 MSPS",
+   "300 MSPS",
+   "50 MSPS"
+  ],
+  "d": 1,
+  "a": "120 MSPS'te 3. Nyquist bölgesi 120–180 MHz'tir; bant sığar ve 20–40 MHz'e katlanır. 100 ve 50 MSPS'te bant bölge sınırını aşar; 300 MSPS ise 320 MSPS'lik Nyquist hızının altındadır ve bant 150 MHz sınırını aşar."
+ }
+]
