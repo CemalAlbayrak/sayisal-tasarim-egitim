@@ -39,15 +39,37 @@ function liste() {
   const t = takipli();
   const biten = t.filter(d => adimSayisi(d.id) === 3).length;
   const adim = t.reduce((a, d) => a + adimSayisi(d.id), 0);
-  const ozet = el("div", { class: "ozet" });
-  [[biten + " / " + t.length, "Biten ders"], [adim + " / " + t.length * 3, "Adım"], ["%" + Math.round(adim / (t.length * 3) * 100), "İlerleme"]]
-    .forEach(([b, s]) => { const k = el("div", { class: "kutu" }); k.append(el("b", {}, b), el("span", {}, s)); ozet.append(k); });
-  icerik.append(ozet);
-
   const sira = t.find(d => d.yazildi && adimSayisi(d.id) < 3);
+
+  const panel = el("section", { class: "panel", "aria-label": "İlerleme" });
+  const ust = el("div", { class: "panel-ust" });
+  const sol = el("div");
+  sol.append(el("span", { class: "etiket" }, "İlerleme"), el("div", { class: "buyuk" }, "%" + Math.round(adim / (t.length * 3) * 100)));
+  const sag = el("div", { class: "panel-sag" });
+  sag.append(el("b", {}, biten + "/" + t.length), el("span", { class: "etiket" }, "Biten ders"));
+  ust.append(sol, sag);
+  const izgara = el("div", { class: "izgara" });
+  const gruplar = [...new Set(t.map(d => d.grup))];
+  gruplar.forEach(g => {
+    const kap = el("div", { class: "izgara-grup" });
+    const n = el("div", { class: "noktalar" });
+    t.filter(d => d.grup === g).forEach(d => {
+      const k = adimSayisi(d.id);
+      const i = el("i", { title: d.id + " · " + d.ad });
+      i.className = d === sira ? "sira" : k === 3 ? "tam" : k > 0 ? "yari" : "";
+      n.append(i);
+    });
+    kap.append(el("span", { class: "etiket" }, g), n);
+    izgara.append(kap);
+  });
+  panel.append(ust, izgara);
+  icerik.append(panel);
+
   if (sira) {
     const a = el("a", { class: "siradaki", href: "#" + sira.id });
-    a.append(el("small", {}, "Sıradaki ders"), el("strong", {}, sira.id), document.createTextNode(sira.ad));
+    const orta = el("div");
+    orta.append(el("span", { class: "etiket" }, "Sıradaki"), el("strong", {}, sira.ad));
+    a.append(el("span", { class: "kod-buyuk" }, sira.id), orta, el("span", { class: "ok", "aria-hidden": "true" }, "→"));
     icerik.append(a);
   }
 
@@ -55,19 +77,26 @@ function liste() {
   dersler.forEach(d => {
     if (d.grup !== grup) {
       grup = d.grup;
-      icerik.append(el("h2", { class: "grup" }, grup));
+      const bolum = el("section", { class: "bolum" });
+      bolum.append(el("span", { class: "etiket" }, grup));
       ul = el("ul", { class: "liste" });
-      icerik.append(ul);
+      bolum.append(ul);
+      icerik.append(bolum);
     }
     const li = el("li");
-    if (d.takip && adimSayisi(d.id) === 3) li.className = "bitti";
+    const k = adimSayisi(d.id);
+    if (!d.yazildi) li.className = "bekliyor";
+    else if (d === sira) li.className = "sira";
+    else if (d.takip && k === 3) li.className = "bitti";
     const a = el("a", { href: "#" + d.id });
-    a.append(el("span", { class: "kod" }, d.id === "giris" ? "·" : d.id));
-    const ad = el("span", { class: "ad" }, d.ad);
-    if (!d.yazildi) ad.append(el("small", {}, "Henüz yazılmadı"));
+    a.append(el("span", { class: "kod" }, d.id === "giris" ? "00" : d.id));
+    const ad = el("span", { class: "ad" });
+    ad.append(el("span", {}, d.ad));
+    if (!d.yazildi) ad.append(el("small", {}, "Yakında"));
+    else if (d.takip && s_test(d)) ad.append(el("small", {}, "Test " + s_test(d)));
     a.append(ad);
-    const nokta = el("span", { class: "adim", "aria-label": adimSayisi(d.id) + " / 3 adım" });
-    if (d.takip) ADIMLAR.forEach(([k]) => { const i = el("i"); if ((ilerleme[d.id] || {})[k]) i.className = "on"; nokta.append(i); });
+    const nokta = el("span", { class: "adim", "aria-label": k + " / 3 adım" });
+    if (d.takip) ADIMLAR.forEach(([kk]) => { const i = el("i"); if ((ilerleme[d.id] || {})[kk]) i.className = "on"; nokta.append(i); });
     a.append(nokta);
     li.append(a); ul.append(li);
   });
@@ -75,9 +104,13 @@ function liste() {
   const araclar = el("div", { class: "araclar" });
   const gonder = el("button", { class: "dugme ana", type: "button" }, "İlerlemeyi Epoch için kopyala");
   gonder.addEventListener("click", () => kopyala(ozetMetni()));
-  araclar.append(gonder);
+  araclar.append(gonder, el("p", { class: "aciklama" }, "İşaretler, notlar ve test sonuçları yalnız bu cihazda saklanır. Kopyaladığın metni sohbete yapıştır; birlikte bakarız."));
   icerik.append(araclar);
-  icerik.append(el("p", { class: "aciklama" }, "İşaretler ve notlar yalnız bu cihazda saklanır. Kopyaladığın metni sohbete yapıştır; birlikte bakarız."));
+}
+
+function s_test(d) {
+  const t = (ilerleme[d.id] || {}).test;
+  return t ? t.dogru + "/" + t.toplam : "";
 }
 
 function ozetMetni() {
@@ -121,7 +154,10 @@ async function ders(id) {
   if (!d) { location.hash = ""; return; }
   document.title = d.id + " · " + d.ad;
   icerik.textContent = "";
-  icerik.append(el("a", { class: "geri", href: "#" }, "← Bütün dersler"));
+  icerik.append(el("a", { class: "geri", href: "#" }, "← Dersler"));
+  const kafa = el("header", { class: "kafa" });
+  kafa.append(el("span", { class: "etiket" }, d.grup), el("div", { class: "kod-buyuk" }, d.id === "giris" ? "00" : d.id), el("h1", {}, d.ad));
+  icerik.append(kafa);
   const govde = el("article", { class: "ders" });
   icerik.append(govde);
   if (d.yazildi) {
@@ -134,9 +170,8 @@ async function ders(id) {
       govde.append(el("p", { class: "soluk" }, "Ders yüklenemedi. Bir kez internete bağlıyken aç; sonra çevrimdışı da açılır."));
     }
   } else {
-    govde.append(el("h2", {}, d.id + " · " + d.ad));
     const p = el("div", { class: "plan" });
-    p.append(el("p", {}, "Bu ders henüz yazılmadı. Kapsayacağı konular:"), el("p", {}, d.konu));
+    p.append(el("p", { class: "etiket" }, "Yakında"), el("p", {}, "Bu ders henüz yazılmadı. Kapsayacağı konular:"), el("p", {}, d.konu));
     govde.append(p);
   }
   if (d.test) icerik.append(await testAlani(d));
@@ -153,8 +188,8 @@ function sayiOku(metin) {
 }
 
 async function testAlani(d) {
-  const kap = el("section", { class: "test" });
-  kap.append(el("h3", {}, "Kısa test"));
+  const kap = el("section", { class: "blok test" });
+  kap.append(el("span", { class: "etiket" }, "Kısa test"));
   let sorular;
   try {
     const r = await fetch("dersler/" + d.id + ".test.json");
@@ -235,8 +270,8 @@ async function testAlani(d) {
 
 function takipAlani(d) {
   const s = ilerleme[d.id] || (ilerleme[d.id] = {});
-  const kap = el("section", { class: "takip" });
-  kap.append(el("h3", {}, "Bu dersin durumu"));
+  const kap = el("section", { class: "blok takip" });
+  kap.append(el("span", { class: "etiket" }, "Bu dersin durumu"));
   const isaretler = el("div", { class: "isaretler" });
   ADIMLAR.forEach(([k, ad]) => {
     const b = el("button", { class: "isaret", type: "button", "aria-pressed": String(!!s[k]) }, ad);
@@ -247,7 +282,7 @@ function takipAlani(d) {
     isaretler.append(b);
   });
   kap.append(isaretler);
-  const etiket = el("label", { for: "not-" + d.id }, "Notların ve sorulara cevapların");
+  const etiket = el("label", { for: "not-" + d.id, class: "etiket" }, "Notların ve sorulara cevapların");
   const ta = el("textarea", { id: "not-" + d.id, placeholder: "Takıldığın yer, sorulara kısa cevapların" });
   ta.value = s.not || "";
   ta.addEventListener("input", () => {
@@ -262,8 +297,13 @@ function gezinti(d) {
   const i = dersler.indexOf(d);
   const nav = el("nav", { class: "gezinti" });
   const once = dersler[i - 1], sonra = dersler[i + 1];
-  nav.append(once ? el("a", { href: "#" + once.id }, "← " + once.ad) : el("span"));
-  nav.append(sonra ? el("a", { href: "#" + sonra.id }, sonra.ad + " →") : el("span"));
+  const kart = (x, sinif, ok) => {
+    const a = el("a", { href: "#" + x.id, class: sinif });
+    a.append(el("b", {}, (ok === "←" ? "← " : "") + (x.id === "giris" ? "00" : x.id) + (ok === "→" ? " →" : "")), el("span", {}, x.ad));
+    return a;
+  };
+  nav.append(once ? kart(once, "onceki", "←") : el("span"));
+  nav.append(sonra ? kart(sonra, "sonraki", "→") : el("span"));
   return nav;
 }
 

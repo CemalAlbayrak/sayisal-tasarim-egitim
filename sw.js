@@ -1,11 +1,11 @@
 // Çevrimdışı okuma: kurulumda her şeyi önbelleğe alır, sonra önce önbellekten verir
 // ve arka planda yeniler. Dersler değişince SURUM artırılır.
-const SURUM = "v2";
+const SURUM = "v3";
 const ONBELLEK = "sayisal-tasarim-" + SURUM;
 const SABIT = [
   "./", "index.html", "style.css", "app.js", "manifest.webmanifest", "dersler.json",
   "simgeler/simge-192.png", "simgeler/simge-512.png",
-  "vendor/katex/katex.min.js", "vendor/katex/katex.min.css"
+  "vendor/katex/katex.min.js", "vendor/katex/katex.min.css", "vendor/fontlar/fontlar.css"
 ];
 
 self.addEventListener("install", olay => {
@@ -17,6 +17,7 @@ self.addEventListener("install", olay => {
     await c.addAll(dersler.filter(d => d.test).map(d => "dersler/" + d.id + ".test.json"));
     const fontlar = await (await fetch("vendor/katex/fonts.json")).json();
     await c.addAll(fontlar);
+    await c.addAll(await (await fetch("vendor/fontlar/liste.json")).json());
     self.skipWaiting();
   })());
 });
