@@ -1,9 +1,9 @@
 // Çevrimdışı okuma: kurulumda her şeyi önbelleğe alır, sonra önce önbellekten verir
 // ve arka planda yeniler. Dersler değişince SURUM artırılır.
-const SURUM = "v4";
+const SURUM = "v5";
 const ONBELLEK = "sayisal-tasarim-" + SURUM;
 const SABIT = [
-  "./", "index.html", "style.css", "app.js", "manifest.webmanifest", "dersler.json",
+  "./", "index.html", "style.css", "app.js", "manifest.webmanifest", "dersler.json", "kaynaklar.json",
   "simgeler/simge-192.png", "simgeler/simge-512.png",
   "vendor/katex/katex.min.js", "vendor/katex/katex.min.css", "vendor/fontlar/fontlar.css"
 ];

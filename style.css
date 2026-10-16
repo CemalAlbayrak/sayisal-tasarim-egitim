@@ -144,3 +144,18 @@ textarea.disa { width: 100%; min-height: 160px; font: .85rem/1.4 var(--mono); ma
 .bildirim { position: fixed; left: 50%; transform: translateX(-50%); bottom: calc(env(safe-area-inset-bottom, 0px) + 18px);
   background: var(--murekkep); color: var(--zemin); border-radius: 999px; padding: 11px 18px; font-size: .9rem; max-width: calc(100% - 32px); z-index: 10; }
 @media (prefers-reduced-motion: reduce) { * { scroll-behavior: auto !important; } }
+
+/* Kaynaklar */
+.kaynaklar { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+.kaynak { background: var(--zemin); border-radius: 16px; padding: 12px 14px; display: grid; gap: 4px; }
+.kaynak-ust { display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+.kaynak-kod { font-family: var(--nokta); font-weight: 700; font-size: 1.15rem; line-height: 1; }
+.rozet { font-family: var(--mono); font-size: .62rem; letter-spacing: .1em; text-transform: uppercase; border: 1px solid var(--cizgi); border-radius: 999px; padding: 2px 8px; color: var(--soluk); }
+.rozet.edinilecek, .rozet.elle { border-color: var(--kirmizi); color: var(--kirmizi); }
+.kaynak p { margin: 0; }
+.kaynak-ad { font-size: .86rem; color: var(--soluk); }
+.kaynak-bolum { font-weight: 600; line-height: 1.35; }
+.kaynak-not { font-size: .9rem; line-height: 1.45; }
+.kaynak-link { font-family: var(--mono); font-size: .75rem; letter-spacing: .06em; text-decoration: none; color: var(--kirmizi); margin-top: 4px; justify-self: start; }
+.araclar a.dugme { text-align: center; text-decoration: none; }
+.blok .aciklama a { color: var(--kirmizi); }

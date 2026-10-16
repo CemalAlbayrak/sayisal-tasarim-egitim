@@ -1,0 +1,113 @@
+[
+ {
+  "k": "Smith",
+  "ad": "The Scientist and Engineer's Guide to DSP",
+  "yazar": "S. W. Smith",
+  "durum": "cevrimici",
+  "yer": "dspguide.com (ücretsiz, çevrimiçi okunur); PDF'ler bilgisayarda ~/Eğitim/Sayısal Tasarım/Kaynaklar",
+  "url": "https://www.dspguide.com/pdfbook.htm"
+ },
+ {
+  "k": "Lyons",
+  "ad": "Understanding Digital Signal Processing, 3. baskı",
+  "yazar": "R. G. Lyons",
+  "durum": "edinilecek",
+  "yer": "Edinilecek (öncelik 1)"
+ },
+ {
+  "k": "Spear",
+  "ad": "SystemVerilog for Verification, 3. baskı",
+  "yazar": "C. Spear, G. Tumbush",
+  "durum": "edinilecek",
+  "yer": "Edinilecek (öncelik 2)"
+ },
+ {
+  "k": "Rice",
+  "ad": "Digital Communications: A Discrete-Time Approach",
+  "yazar": "M. Rice",
+  "durum": "edinilecek",
+  "yer": "Edinilecek (öncelik 3)"
+ },
+ {
+  "k": "Chu",
+  "ad": "FPGA Prototyping by SystemVerilog Examples",
+  "yazar": "P. P. Chu",
+  "durum": "edinilecek",
+  "yer": "Edinilecek"
+ },
+ {
+  "k": "Harris",
+  "ad": "Digital Design and Computer Architecture",
+  "yazar": "D. Harris, S. Harris",
+  "durum": "edinilecek",
+  "yer": "Edinilecek"
+ },
+ {
+  "k": "fharris",
+  "ad": "Multirate Signal Processing for Communication Systems",
+  "yazar": "f. j. harris",
+  "durum": "edinilecek",
+  "yer": "Edinilecek"
+ },
+ {
+  "k": "Salemi",
+  "ad": "The UVM Primer",
+  "yazar": "R. Salemi",
+  "durum": "edinilecek",
+  "yer": "Edinilecek"
+ },
+ {
+  "k": "Haykin",
+  "ad": "Adaptive Filter Theory",
+  "yazar": "S. Haykin",
+  "durum": "edinilecek",
+  "yer": "Edinilecek (başvuru kitabı)"
+ },
+ {
+  "k": "Cummings",
+  "ad": "SNUG makaleleri: atamalar, CDC, asenkron FIFO",
+  "yazar": "C. Cummings",
+  "durum": "elle",
+  "yer": "Ücretsiz; paradigm-works.com teknik kütüphanesinden indirilir",
+  "url": "https://www.paradigm-works.com/technical-library"
+ },
+ {
+  "k": "ADI",
+  "ad": "Analog Devices MT eğitim notları (MT-001, 002, 003, 007)",
+  "yazar": "Analog Devices",
+  "durum": "elle",
+  "yer": "Ücretsiz; analog.com'da \"MT-002 pdf\" diye aranır",
+  "url": "https://www.analog.com/en/resources/technical-articles.html"
+ },
+ {
+  "k": "AMD",
+  "ad": "AMD/Xilinx kullanıcı kılavuzları (UG/PG)",
+  "yazar": "AMD",
+  "durum": "cevrimici",
+  "yer": "docs.amd.com; her kılavuz sayfasında \"Download PDF\"",
+  "url": "https://docs.amd.com"
+ },
+ {
+  "k": "Zynq",
+  "ad": "The Zynq Book",
+  "yazar": "L. Crockett ve ark.",
+  "durum": "elle",
+  "yer": "Ücretsiz; zynqbook.com'dan kayıtla iner",
+  "url": "http://www.zynqbook.com"
+ },
+ {
+  "k": "Andraka",
+  "ad": "A survey of CORDIC algorithms for FPGA based computers",
+  "yazar": "R. Andraka (1998)",
+  "durum": "elde",
+  "yer": "Bilgisayarda: ~/Eğitim/Sayısal Tasarım/Kaynaklar",
+  "url": "http://www.andraka.com/files/crdcsrvy.pdf"
+ },
+ {
+  "k": "AD9084",
+  "ad": "AD9084 veri sayfası",
+  "yazar": "Analog Devices",
+  "durum": "elde",
+  "yer": "Bilgisayarda: ~/İndirilenler/ad9084.pdf"
+ }
+]

@@ -5,6 +5,7 @@ const ANAHTAR = "sayisal-tasarim-ilerleme";
 const KONUM = "sayisal-tasarim-konum";
 const icerik = document.getElementById("icerik");
 let dersler = [];
+let katalog = [];
 
 function oku(anahtar) {
   try { return JSON.parse(localStorage.getItem(anahtar) || "{}"); } catch (e) { return {}; }
@@ -102,6 +103,8 @@ function liste() {
   });
 
   const araclar = el("div", { class: "araclar" });
+  const kaynakLink = el("a", { class: "dugme", href: "#kaynaklar" }, "Kaynaklar");
+  araclar.append(kaynakLink);
   const gonder = el("button", { class: "dugme ana", type: "button" }, "İlerlemeyi Epoch için kopyala");
   gonder.addEventListener("click", () => kopyala(ozetMetni()));
   araclar.append(gonder, el("p", { class: "aciklama" }, "İşaretler, notlar ve test sonuçları yalnız bu cihazda saklanır. Kopyaladığın metni sohbete yapıştır; birlikte bakarız."));
@@ -174,12 +177,66 @@ async function ders(id) {
     p.append(el("p", { class: "etiket" }, "Yakında"), el("p", {}, "Bu ders henüz yazılmadı. Kapsayacağı konular:"), el("p", {}, d.konu));
     govde.append(p);
   }
+  if (d.kaynak) icerik.append(kaynakAlani(d));
   if (d.test) icerik.append(await testAlani(d));
   if (d.takip) icerik.append(takipAlani(d));
   icerik.append(gezinti(d));
   const konum = oku(KONUM)[id];
   window.scrollTo(0, konum || 0);
   icerik.focus({ preventScroll: true });
+}
+
+const DURUM = { cevrimici: "Çevrimiçi", elde: "Bilgisayarda", edinilecek: "Edinilecek", elle: "Elle indirilecek" };
+
+function kaynakSatiri(r) {
+  const k = katalog.find(x => x.k === r.k) || { ad: r.k, durum: "" };
+  const li = el("li", { class: "kaynak" });
+  const ust = el("div", { class: "kaynak-ust" });
+  ust.append(el("span", { class: "kaynak-kod" }, r.k), el("span", { class: "rozet " + (k.durum || "") }, DURUM[k.durum] || ""));
+  li.append(ust, el("p", { class: "kaynak-ad" }, k.ad), el("p", { class: "kaynak-bolum" }, r.b));
+  if (r.n) li.append(el("p", { class: "kaynak-not" }, r.n));
+  const u = r.u || null;
+  if (u) li.append(el("a", { class: "kaynak-link", href: u, target: "_blank", rel: "noopener" }, "Çevrimiçi aç ↗"));
+  return li;
+}
+
+function kaynakAlani(d) {
+  const kap = el("section", { class: "blok" });
+  kap.append(el("span", { class: "etiket" }, "Bu ders için oku"));
+  const ul = el("ul", { class: "kaynaklar" });
+  d.kaynak.forEach(r => ul.append(kaynakSatiri(r)));
+  kap.append(ul, el("p", { class: "aciklama" }, "Önce dersi oku, sonra kaynağın gösterilen bölümüne geç. Kaynakların nerede olduğu: "));
+  const a = el("a", { href: "#kaynaklar" }, "Kaynaklar sayfası");
+  kap.lastChild.append(a);
+  return kap;
+}
+
+function kaynaklarSayfasi() {
+  document.title = "Kaynaklar";
+  icerik.textContent = "";
+  icerik.append(el("a", { class: "geri", href: "#" }, "← Dersler"));
+  const kafa = el("header", { class: "kafa" });
+  kafa.append(el("span", { class: "etiket" }, "Başvuru"), el("h1", {}, "Kaynaklar"));
+  icerik.append(kafa);
+  const sira = ["cevrimici", "elde", "elle", "edinilecek"];
+  sira.forEach(durum => {
+    const liste = katalog.filter(k => k.durum === durum);
+    if (!liste.length) return;
+    const bolum = el("section", { class: "blok" });
+    bolum.append(el("span", { class: "etiket" }, DURUM[durum]));
+    const ul = el("ul", { class: "kaynaklar" });
+    liste.forEach(k => {
+      const li = el("li", { class: "kaynak" });
+      li.append(el("span", { class: "kaynak-kod" }, k.k), el("p", { class: "kaynak-ad" }, k.ad), el("p", { class: "kaynak-bolum" }, k.yazar), el("p", { class: "kaynak-not" }, k.yer));
+      const kullanan = dersler.filter(d => (d.kaynak || []).some(r => r.k === k.k)).map(d => d.id);
+      if (kullanan.length) li.append(el("p", { class: "kaynak-not" }, "Kullanan dersler: " + kullanan.join(", ")));
+      if (k.url) li.append(el("a", { class: "kaynak-link", href: k.url, target: "_blank", rel: "noopener" }, "Aç ↗"));
+      ul.append(li);
+    });
+    bolum.append(ul);
+    icerik.append(bolum);
+  });
+  window.scrollTo(0, 0);
 }
 
 function sayiOku(metin) {
@@ -317,7 +374,8 @@ window.addEventListener("scroll", () => {
 
 function yonlendir() {
   const id = decodeURIComponent(location.hash.slice(1));
-  if (id) ders(id); else { liste(); window.scrollTo(0, 0); }
+  if (id === "kaynaklar") kaynaklarSayfasi();
+  else if (id) ders(id); else { liste(); window.scrollTo(0, 0); }
 }
 
 function baglanti() { document.getElementById("cevrimdisi").hidden = navigator.onLine; }
@@ -329,6 +387,7 @@ window.addEventListener("offline", baglanti);
   try {
     const r = await fetch("dersler.json");
     dersler = await r.json();
+    try { katalog = await (await fetch("kaynaklar.json")).json(); } catch (e) { katalog = []; }
   } catch (e) {
     icerik.textContent = "Ders listesi yüklenemedi. İlk açılışta internet gerekir.";
     return;

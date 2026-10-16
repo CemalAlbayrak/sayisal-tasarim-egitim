@@ -12,7 +12,19 @@
   "ad": "Sayısal mantık tekrarı",
   "yazildi": true,
   "takip": true,
-  "test": true
+  "test": true,
+  "kaynak": [
+   {
+    "k": "Harris",
+    "b": "Bölüm 3: Ardışıl mantık tasarımı",
+    "n": "3.2 mandal ve kaydedici, 3.4 durum makineleri, 3.5 ardışıl mantığın zamanlaması (metastabilite dahil)"
+   },
+   {
+    "k": "Cummings",
+    "b": "Nonblocking Assignments in Verilog Synthesis (SNUG 2000)",
+    "n": "Engelleyen/engellemeyen atama kuralları; A3'e de hazırlık"
+   }
+  ]
  },
  {
   "id": "A2",
@@ -20,14 +32,56 @@
   "ad": "FPGA mimarisi: Zynq-7010",
   "yazildi": true,
   "takip": true,
-  "test": true
+  "test": true,
+  "kaynak": [
+   {
+    "k": "AMD",
+    "b": "UG474: 7 Series CLB",
+    "n": "Dilim yapısı, LUT, taşıma zinciri, SLICEM",
+    "u": "https://docs.amd.com/v/u/en-US/ug474_7Series_CLB"
+   },
+   {
+    "k": "AMD",
+    "b": "UG473: 7 Series Memory Resources",
+    "n": "Blok RAM bölümü: genişlik/derinlik, okuma gecikmesi, çıkış kaydedicisi",
+    "u": "https://docs.amd.com/v/u/en-US/ug473_7Series_Memory_Resources"
+   },
+   {
+    "k": "AMD",
+    "b": "UG479: 7 Series DSP48E1",
+    "n": "Dilim açıklaması ve ön toplayıcı; şekillere bakmak yeterli",
+    "u": "https://docs.amd.com/v/u/en-US/ug479_7Series_DSP48E1"
+   },
+   {
+    "k": "Zynq",
+    "b": "Zynq mimarisi bölümleri",
+    "n": "PS, PL ve AXI kapıları (GP, HP, ACP)"
+   }
+  ]
  },
  {
   "id": "A3",
   "grup": "Temeller",
   "ad": "Verilog'dan SystemVerilog'a",
   "yazildi": true,
-  "takip": true
+  "takip": true,
+  "kaynak": [
+   {
+    "k": "Chu",
+    "b": "SystemVerilog tasarım bölümleri",
+    "n": "always_ff, always_comb, enum ile durum makinesi"
+   },
+   {
+    "k": "Spear",
+    "b": "Bölüm 2–4",
+    "n": "Veri tipleri, prosedürel yapılar, arabirimler"
+   },
+   {
+    "k": "Cummings",
+    "b": "Nonblocking Assignments (SNUG 2000)",
+    "n": "Atama kurallarının tamamı"
+   }
+  ]
  },
  {
   "id": "M",
@@ -42,7 +96,31 @@
   "ad": "Sinyal dili",
   "yazildi": true,
   "takip": true,
-  "test": true
+  "test": true,
+  "kaynak": [
+   {
+    "k": "Smith",
+    "b": "Bölüm 30",
+    "n": "Karmaşık sayılar: kutupsal biçim, çarpma, Euler",
+    "u": "https://www.dspguide.com/ch30.htm"
+   },
+   {
+    "k": "Smith",
+    "b": "Bölüm 31",
+    "n": "Karmaşık Fourier dönüşümünün ilk yarısı: negatif frekans",
+    "u": "https://www.dspguide.com/ch31.htm"
+   },
+   {
+    "k": "Lyons",
+    "b": "Bölüm 8: Quadrature Signals",
+    "n": "I/Q ve mikser; bu dersin en yakın karşılığı"
+   },
+   {
+    "k": "Lyons",
+    "b": "Bölüm 1: Discrete Sequences and Systems",
+    "n": "Desibel ve temel gösterimler"
+   }
+  ]
  },
  {
   "id": "M2",
@@ -50,7 +128,32 @@
   "ad": "Frekans alanı",
   "yazildi": true,
   "takip": true,
-  "test": true
+  "test": true,
+  "kaynak": [
+   {
+    "k": "Smith",
+    "b": "Bölüm 10",
+    "n": "Fourier dönüşümünün özellikleri: kayma, doğrusallık",
+    "u": "https://www.dspguide.com/ch10.htm"
+   },
+   {
+    "k": "Smith",
+    "b": "Bölüm 11",
+    "n": "Dönüşüm çiftleri: dikdörtgen darbe ve sinc",
+    "u": "https://www.dspguide.com/ch11.htm"
+   },
+   {
+    "k": "Smith",
+    "b": "Bölüm 6",
+    "n": "Evrişim: süzgeç neden evrişimdir",
+    "u": "https://www.dspguide.com/ch6.htm"
+   },
+   {
+    "k": "Lyons",
+    "b": "Bölüm 3'ün girişi",
+    "n": "Spektrumun anlamı"
+   }
+  ]
  },
  {
   "id": "M3",
@@ -58,7 +161,30 @@
   "ad": "Örnekleme",
   "yazildi": true,
   "takip": true,
-  "test": true
+  "test": true,
+  "kaynak": [
+   {
+    "k": "Smith",
+    "b": "Bölüm 3",
+    "n": "ADC ve DAC: örnekleme teoremi, örtüşme, örtüşme önleyici süzgeç, DAC ve geri çatım",
+    "u": "https://www.dspguide.com/ch3.htm"
+   },
+   {
+    "k": "Lyons",
+    "b": "Bölüm 2: Periodic Sampling",
+    "n": "Örtüşme ve bant geçiren örnekleme; M3.6'nın ana kaynağı"
+   },
+   {
+    "k": "ADI",
+    "b": "MT-002 (Nyquist ölçütü) ve MT-007 (açıklık titremesi)",
+    "n": "Nyquist bölgeleri ve titreme SNR formülü"
+   },
+   {
+    "k": "AD9084",
+    "b": "Örnekleme ve Nyquist bölgesi kısmı",
+    "n": "Kendi projendeki ADC'de M3.6'yı uygula"
+   }
+  ]
  },
  {
   "id": "M4",
@@ -66,7 +192,25 @@
   "ad": "Kuantalama ve sayı gösterimi",
   "yazildi": false,
   "konu": "ADC/DAC, LSB, SNR ve ENOB, ikiye tümleyen, sabit nokta, kayan nokta",
-  "takip": true
+  "takip": true,
+  "kaynak": [
+   {
+    "k": "Smith",
+    "b": "Bölüm 3",
+    "n": "Kuantalama gürültüsü kısmı",
+    "u": "https://www.dspguide.com/ch3.htm"
+   },
+   {
+    "k": "Lyons",
+    "b": "Bölüm 12: Digital Data Formats",
+    "n": "İkiye tümleyen, sabit nokta, yuvarlama"
+   },
+   {
+    "k": "ADI",
+    "b": "MT-001 ve MT-003",
+    "n": "SNR, ENOB, SINAD"
+   }
+  ]
  },
  {
   "id": "M5",
@@ -74,7 +218,33 @@
   "ad": "Ayrık zamanlı sistemler",
   "yazildi": false,
   "konu": "Doğrusal ve zamanla değişmeyen sistem, dürtü yanıtı, evrişim, fark denklemi, z-dönüşümü, kutup ve sıfır",
-  "takip": true
+  "takip": true,
+  "kaynak": [
+   {
+    "k": "Smith",
+    "b": "Bölüm 5",
+    "n": "Doğrusal sistemler",
+    "u": "https://www.dspguide.com/ch5.htm"
+   },
+   {
+    "k": "Smith",
+    "b": "Bölüm 6",
+    "n": "Evrişim",
+    "u": "https://www.dspguide.com/ch6.htm"
+   },
+   {
+    "k": "Smith",
+    "b": "Bölüm 7",
+    "n": "Evrişimin özellikleri",
+    "u": "https://www.dspguide.com/ch7.htm"
+   },
+   {
+    "k": "Smith",
+    "b": "Bölüm 33",
+    "n": "z-dönüşümü",
+    "u": "https://www.dspguide.com/ch33.htm"
+   }
+  ]
  },
  {
   "id": "M6",
@@ -82,7 +252,32 @@
   "ad": "DFT ve FFT",
   "yazildi": false,
   "konu": "Çözünürlük, pencereleme, spektral sızıntı",
-  "takip": true
+  "takip": true,
+  "kaynak": [
+   {
+    "k": "Smith",
+    "b": "Bölüm 8",
+    "n": "DFT",
+    "u": "https://www.dspguide.com/ch8.htm"
+   },
+   {
+    "k": "Smith",
+    "b": "Bölüm 9",
+    "n": "DFT uygulamaları ve pencereleme",
+    "u": "https://www.dspguide.com/ch9.htm"
+   },
+   {
+    "k": "Smith",
+    "b": "Bölüm 12",
+    "n": "FFT",
+    "u": "https://www.dspguide.com/ch12.htm"
+   },
+   {
+    "k": "Lyons",
+    "b": "Bölüm 3–4: DFT ve FFT",
+    "n": "Sızıntı, pencereler, kelebek"
+   }
+  ]
  },
  {
   "id": "M7",
@@ -90,7 +285,44 @@
   "ad": "Süzgeç tasarımı",
   "yazildi": false,
   "konu": "Özellikler, doğrusal faz, grup gecikmesi, FIR ve IIR tasarım yöntemleri",
-  "takip": true
+  "takip": true,
+  "kaynak": [
+   {
+    "k": "Smith",
+    "b": "Bölüm 14",
+    "n": "Süzgeçlere giriş",
+    "u": "https://www.dspguide.com/ch14.htm"
+   },
+   {
+    "k": "Smith",
+    "b": "Bölüm 16",
+    "n": "Pencereli sinc FIR",
+    "u": "https://www.dspguide.com/ch16.htm"
+   },
+   {
+    "k": "Smith",
+    "b": "Bölüm 19",
+    "n": "Özyinelemeli (IIR) süzgeçler",
+    "u": "https://www.dspguide.com/ch19.htm"
+   },
+   {
+    "k": "Smith",
+    "b": "Bölüm 20",
+    "n": "Chebyshev süzgeçleri",
+    "u": "https://www.dspguide.com/ch20.htm"
+   },
+   {
+    "k": "Smith",
+    "b": "Bölüm 21",
+    "n": "Süzgeç karşılaştırması",
+    "u": "https://www.dspguide.com/ch21.htm"
+   },
+   {
+    "k": "Lyons",
+    "b": "Bölüm 5–6: FIR ve IIR",
+    "n": "Tasarım yöntemleri"
+   }
+  ]
  },
  {
   "id": "M8",
@@ -98,7 +330,19 @@
   "ad": "Çok hızlı işleme",
   "yazildi": false,
   "konu": "Seyreltme, ara değerleme, örtüşme ve hayalet görüntü",
-  "takip": true
+  "takip": true,
+  "kaynak": [
+   {
+    "k": "Lyons",
+    "b": "Bölüm 10: Sample Rate Conversion",
+    "n": "Seyreltme, ara değerleme, çok fazlı yapı, CIC"
+   },
+   {
+    "k": "fharris",
+    "b": "Giriş bölümleri",
+    "n": "Çok fazlı süzgeçlerin sezgisi"
+   }
+  ]
  },
  {
   "id": "M9",
@@ -106,7 +350,26 @@
   "ad": "Olasılık, gürültü ve korelasyon",
   "yazildi": false,
   "konu": "Gauss dağılımı, güç spektral yoğunluğu, beyaz gürültü, oto ve çapraz korelasyon",
-  "takip": true
+  "takip": true,
+  "kaynak": [
+   {
+    "k": "Smith",
+    "b": "Bölüm 2",
+    "n": "İstatistik, olasılık ve gürültü",
+    "u": "https://www.dspguide.com/ch2.htm"
+   },
+   {
+    "k": "Smith",
+    "b": "Bölüm 7",
+    "n": "Korelasyon kısmı",
+    "u": "https://www.dspguide.com/ch7.htm"
+   },
+   {
+    "k": "Rice",
+    "b": "Olasılık ve rastgele süreçler bölümü",
+    "n": "Güç spektral yoğunluğu, beyaz gürültü"
+   }
+  ]
  },
  {
   "id": "M10",
@@ -114,7 +377,14 @@
   "ad": "Doğrusal cebir temeli",
   "yazildi": false,
   "konu": "Vektör, matris, iç çarpım, en küçük kareler",
-  "takip": true
+  "takip": true,
+  "kaynak": [
+   {
+    "k": "Haykin",
+    "b": "Doğrusal cebir ön bilgisi",
+    "n": "İç çarpım, korelasyon matrisi, en küçük kareler"
+   }
+  ]
  },
  {
   "id": "M11",
@@ -122,7 +392,14 @@
   "ad": "Haberleşme temelleri",
   "yazildi": false,
   "konu": "Taban bant ve taşıyıcı bant, I/Q, PSK ve QAM, darbe şekillendirme, simgeler arası girişim, Eb/N0, BER, Shannon kapasitesi",
-  "takip": true
+  "takip": true,
+  "kaynak": [
+   {
+    "k": "Rice",
+    "b": "Modülasyon, darbe şekillendirme ve BER bölümleri",
+    "n": "PSK/QAM, RRC, Eb/N0"
+   }
+  ]
  },
  {
   "id": "B",
@@ -137,7 +414,15 @@
   "ad": "Altyapı",
   "yazildi": false,
   "konu": "Vivado Tcl akışı ve Makefile; Icarus/Verilator ve cocotb; depo düzeni",
-  "takip": true
+  "takip": true,
+  "kaynak": [
+   {
+    "k": "AMD",
+    "b": "UG894: Using Tcl Scripting",
+    "n": "Proje dışı akış komutları",
+    "u": "https://docs.amd.com/v/u/en-US/ug894-vivado-tcl-scripting"
+   }
+  ]
  },
  {
   "id": "B1",
@@ -145,7 +430,19 @@
   "ad": "Doğrulama ve sabit nokta",
   "yazildi": false,
   "konu": "Kendini kontrol eden doğrulama ortamı; SVA; Python sabit nokta modeli; doyumlu çarp-topla",
-  "takip": true
+  "takip": true,
+  "kaynak": [
+   {
+    "k": "Spear",
+    "b": "Bölüm 1–5",
+    "n": "Doğrulama ortamı, SVA"
+   },
+   {
+    "k": "Cummings",
+    "b": "Atamalar makalesi",
+    "n": "Test ortamında yarış durumları"
+   }
+  ]
  },
  {
   "id": "B2",
@@ -153,7 +450,19 @@
   "ad": "Zamanlama, CDC, hata ayıklama",
   "yazildi": false,
   "konu": "XDC kısıtları ve zamanlama raporu okuma; yanlış ve çok çevrimli yollar; Gray kodlu asenkron FIFO; ILA ve VIO",
-  "takip": true
+  "takip": true,
+  "kaynak": [
+   {
+    "k": "AMD",
+    "b": "UG903 (kısıtlar), UG906 (zamanlama analizi), UG949 (yöntem), UG908 (ILA)",
+    "n": "İlgili bölümler derste gösterilecek"
+   },
+   {
+    "k": "Cummings",
+    "b": "CDC (SNUG 2008) ve asenkron FIFO (SNUG 2002) makaleleri",
+    "n": "B2.3'ün ana kaynağı"
+   }
+  ]
  },
  {
   "id": "B3",
@@ -161,7 +470,20 @@
   "ad": "FIR",
   "yazildi": false,
   "konu": "Doğrudan ve devrik yapı; sistolik yapı ve DSP zinciri; simetri ve ön toplayıcı; ses kodeğinde gerçek zamanlı deneme",
-  "takip": true
+  "takip": true,
+  "kaynak": [
+   {
+    "k": "Lyons",
+    "b": "Bölüm 5: FIR Filters",
+    "n": ""
+   },
+   {
+    "k": "AMD",
+    "b": "UG479: DSP48E1 FIR örnekleri",
+    "n": "Sistolik yapı ve ön toplayıcı",
+    "u": "https://docs.amd.com/v/u/en-US/ug479_7Series_DSP48E1"
+   }
+  ]
  },
  {
   "id": "B4",
@@ -169,7 +491,19 @@
   "ad": "Çok hızlı işleme (uygulama)",
   "yazildi": false,
   "konu": "CIC ve kompanzasyon; yarı bant süzgeci; çok fazlı seyreltme ve ara değerleme",
-  "takip": true
+  "takip": true,
+  "kaynak": [
+   {
+    "k": "Lyons",
+    "b": "Bölüm 10",
+    "n": "CIC ve yarı bant"
+   },
+   {
+    "k": "fharris",
+    "b": "Çok fazlı süzgeç bölümleri",
+    "n": ""
+   }
+  ]
  },
  {
   "id": "B5",
@@ -177,7 +511,20 @@
   "ad": "IIR",
   "yazildi": false,
   "konu": "Biquad; DF1 ve DF2T; katsayı kuantalama ve kararlılık; sınır çevrimleri",
-  "takip": true
+  "takip": true,
+  "kaynak": [
+   {
+    "k": "Lyons",
+    "b": "Bölüm 6: IIR Filters",
+    "n": ""
+   },
+   {
+    "k": "Smith",
+    "b": "Bölüm 19",
+    "n": "Özyinelemeli süzgeçler",
+    "u": "https://www.dspguide.com/ch19.htm"
+   }
+  ]
  },
  {
   "id": "B6",
@@ -185,7 +532,19 @@
   "ad": "CORDIC ve NCO",
   "yazildi": false,
   "konu": "Döndürme ve vektör kipleri; kazanç ve çeyrek düzeltmesi; NCO ve faz kesme sahte tonları",
-  "takip": true
+  "takip": true,
+  "kaynak": [
+   {
+    "k": "Andraka",
+    "b": "Makalenin tamamı",
+    "n": "CORDIC'in FPGA'da gerçeklenmesi"
+   },
+   {
+    "k": "Lyons",
+    "b": "Bölüm 13: DSP Tricks",
+    "n": "CORDIC ve hızlı yaklaşımlar"
+   }
+  ]
  },
  {
   "id": "B7",
@@ -193,7 +552,19 @@
   "ad": "PS-PL",
   "yazildi": false,
   "konu": "AXI4-Lite kaydedici bloğu; AXI-Stream ve AXI DMA; kesmeler; Vitis'te çıplak metal C sürücü",
-  "takip": true
+  "takip": true,
+  "kaynak": [
+   {
+    "k": "Zynq",
+    "b": "PS-PL, AXI ve çıplak metal bölümleri",
+    "n": ""
+   },
+   {
+    "k": "AMD",
+    "b": "UG585 (Zynq TRM) ve PG021 (AXI DMA)",
+    "n": "Başvuru"
+   }
+  ]
  },
  {
   "id": "B8",
@@ -201,7 +572,19 @@
   "ad": "DDC/DUC zinciri",
   "yazildi": false,
   "konu": "Zinciri birleştirme; DMA ile yakalama; spektrumu PS'de çizdirme",
-  "takip": true
+  "takip": true,
+  "kaynak": [
+   {
+    "k": "Lyons",
+    "b": "Bölüm 8 ve 10",
+    "n": "Karmaşık sinyaller, oran dönüşümü"
+   },
+   {
+    "k": "fharris",
+    "b": "DDC bölümleri",
+    "n": ""
+   }
+  ]
  },
  {
   "id": "B9",
@@ -209,7 +592,19 @@
   "ad": "UVM",
   "yazildi": false,
   "konu": "SV nesneleri; UVM bileşenleri ve fazları; dizi (sequence) ve karşılaştırıcı; kapsam",
-  "takip": true
+  "takip": true,
+  "kaynak": [
+   {
+    "k": "Spear",
+    "b": "Bölüm 5–9",
+    "n": "Sınıflar, rastgele üretim, kapsam"
+   },
+   {
+    "k": "Salemi",
+    "b": "Kitabın tamamı (kısa)",
+    "n": "UVM'ye adım adım giriş"
+   }
+  ]
  },
  {
   "id": "B10",
@@ -217,7 +612,14 @@
   "ad": "Uyarlamalı süzgeç",
   "yazildi": false,
   "konu": "LMS ve NLMS; adım boyu ve kararlılık; sabit noktada yakınsama; karıştırıcı bastırmaya bağlantı",
-  "takip": true
+  "takip": true,
+  "kaynak": [
+   {
+    "k": "Haykin",
+    "b": "LMS bölümleri",
+    "n": ""
+   }
+  ]
  },
  {
   "id": "B11",
@@ -225,7 +627,14 @@
   "ad": "QPSK alıcı",
   "yazildi": false,
   "konu": "Kök yükseltilmiş kosinüs (RRC); simge zamanlama (Gardner); taşıyıcı eşzamanlama (Costas); BER ölçümü",
-  "takip": true
+  "takip": true,
+  "kaynak": [
+   {
+    "k": "Rice",
+    "b": "Simge zamanlama ve taşıyıcı eşzamanlama bölümleri",
+    "n": "Gardner, Costas, döngü süzgeci"
+   }
+  ]
  },
  {
   "id": "B12",
@@ -233,7 +642,20 @@
   "ad": "FFT ve OFDM",
   "yazildi": false,
   "konu": "Radix-2 FFT; Xilinx FFT IP; döngüsel önek; Schmidl-Cox eşzamanlama; pilotla kanal kestirimi ve eşitleme",
-  "takip": true
+  "takip": true,
+  "kaynak": [
+   {
+    "k": "AMD",
+    "b": "PG109: FFT IP",
+    "n": ""
+   },
+   {
+    "k": "Smith",
+    "b": "Bölüm 12",
+    "n": "FFT",
+    "u": "https://www.dspguide.com/ch12.htm"
+   }
+  ]
  },
  {
   "id": "B13",
@@ -241,7 +663,20 @@
   "ad": "Görüntü işleme",
   "yazildi": false,
   "konu": "AXI4-Stream video; satır tamponu ve 3×3 pencere; Sobel ve Gauss; VDMA; HDMI giriş-çıkış",
-  "takip": true
+  "takip": true,
+  "kaynak": [
+   {
+    "k": "Smith",
+    "b": "Bölüm 24",
+    "n": "Doğrusal görüntü işleme: evrişim çekirdekleri",
+    "u": "https://www.dspguide.com/ch24.htm"
+   },
+   {
+    "k": "AMD",
+    "b": "VDMA ve video IP kılavuzları",
+    "n": ""
+   }
+  ]
  },
  {
   "id": "BP",
@@ -249,6 +684,18 @@
   "ad": "Fiber hattı (paralel)",
   "yazildi": false,
   "konu": "GTX alıcı-vericisi; 8b/10b ve 64b/66b; Aurora'nın içi; IBERT ile göz diyagramı; JESD204B'ye giriş",
-  "takip": true
+  "takip": true,
+  "kaynak": [
+   {
+    "k": "AMD",
+    "b": "UG476 (GTX) ve PG046 (Aurora 8b/10b)",
+    "n": ""
+   },
+   {
+    "k": "AD9084",
+    "b": "JESD204 arabirimi kısmı",
+    "n": "Kendi projende JESD'nin gerçek kullanımı"
+   }
+  ]
  }
 ]
