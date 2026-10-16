@@ -336,13 +336,18 @@ window.addEventListener("offline", baglanti);
   window.addEventListener("hashchange", yonlendir);
   yonlendir();
   if ("serviceWorker" in navigator) {
+    // Yeni sürüm devraldığında sayfayı bir kez yenile; okuma konumu saklandığı için kaldığın yerden açılır.
+    const ilkKurulum = !navigator.serviceWorker.controller;
+    let yenilendi = false;
+    navigator.serviceWorker.addEventListener("controllerchange", () => {
+      if (ilkKurulum || yenilendi) return;
+      yenilendi = true;
+      location.reload();
+    });
     navigator.serviceWorker.register("sw.js").then(kayit => {
-      kayit.addEventListener("updatefound", () => {
-        const yeni = kayit.installing;
-        yeni && yeni.addEventListener("statechange", () => {
-          if (yeni.state === "installed" && navigator.serviceWorker.controller) bildir("Yeni dersler indirildi. Sayfayı yenileyince görünür.");
-        });
-      });
+      // Uygulama uzun süre açık kalınca da güncellemeye bak.
+      document.addEventListener("visibilitychange", () => { if (!document.hidden) kayit.update().catch(() => {}); });
+      setInterval(() => kayit.update().catch(() => {}), 30 * 60 * 1000);
     }).catch(() => {});
   }
 })();
